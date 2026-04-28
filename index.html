@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support – CalorieRecycle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #0a0a0a;
+      --surface:   #141414;
+      --border:    rgba(255,255,255,0.08);
+      --green:     #4ade80;
+      --green-dim: rgba(74,222,128,0.12);
+      --text:      #f0f0f0;
+      --muted:     rgba(240,240,240,0.45);
+      --faint:     rgba(240,240,240,0.18);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 56px 0 48px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .app-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green-dim);
+      border: 1px solid rgba(74,222,128,0.25);
+      border-radius: 100px;
+      padding: 6px 14px 6px 8px;
+      margin-bottom: 24px;
+    }
+
+    .app-badge-dot {
+      width: 8px; height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+    }
+
+    .app-badge span {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    header h1 {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    header h1 em {
+      font-style: normal;
+      color: var(--green);
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 520px;
+    }
+
+    /* ── Lang switcher ── */
+    .lang-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active, .lang-btn:hover {
+      border-color: var(--green);
+      color: var(--green);
+      background: var(--green-dim);
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 32px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-card-left h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .contact-card-left p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: #0a0a0a;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 22px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .contact-link:hover { opacity: 0.85; }
+
+    /* ── FAQ ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 20px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 48px;
+    }
+
+    .faq-item {
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      text-align: left;
+      padding: 18px 22px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .faq-q:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.14);
+    }
+
+    .faq-q.open {
+      border-color: rgba(74,222,128,0.3);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .faq-arrow {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      border: 1.5px solid var(--faint);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.25s, border-color 0.2s;
+    }
+
+    .faq-q.open .faq-arrow {
+      transform: rotate(45deg);
+      border-color: var(--green);
+    }
+
+    .faq-arrow svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    .faq-a {
+      display: none;
+      background: rgba(20,20,20,0.9);
+      border: 1px solid rgba(74,222,128,0.3);
+      border-top: none;
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+      padding: 16px 22px 20px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .faq-a.open { display: block; }
+
+    .faq-a a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    .faq-a a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer p {
+      color: var(--faint);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--faint);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--green); }
+
+    /* ── Lang content ── */
+    [data-lang="en"] { display: none; }
+
+    @media (max-width: 520px) {
+      header { padding: 40px 0 36px; }
+      .contact-card { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="app-badge">
+      <div class="app-badge-dot"></div>
+      <span>CalorieRecycle</span>
+    </div>
+    <h1 data-lang="zh">需要協助？<br/>我們在這裡 <em>幫您</em></h1>
+    <h1 data-lang="en">Need help?<br/>We're here <em>for you</em></h1>
+    <p data-lang="zh">如有任何問題或建議，歡迎直接寄信給我們，通常在 1–2 個工作天內回覆。</p>
+    <p data-lang="en">For questions, feedback, or bug reports, send us an email. We typically respond within 1–2 business days.</p>
+  </header>
+
+  <div class="lang-bar">
+    <button class="lang-btn active" onclick="setLang('zh')">繁體中文</button>
+    <button class="lang-btn" onclick="setLang('en')">English</button>
+  </div>
+
+  <!-- Contact Card -->
+  <div class="contact-card">
+    <div class="contact-card-left">
+      <h2 data-lang="zh">聯絡開發者</h2>
+      <h2 data-lang="en">Contact the Developer</h2>
+      <p data-lang="zh">Anderson Tsai · 通常 1–2 個工作天內回覆</p>
+      <p data-lang="en">Anderson Tsai · Usually replies within 1–2 business days</p>
+    </div>
+    <a class="contact-link" href="mailto:Calorie.Recycle@gmail.com">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+      Calorie.Recycle@gmail.com
+    </a>
+  </div>
+
+  <!-- FAQ ZH -->
+  <div data-lang="zh">
+    <p class="section-label">常見問題</p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          App 需要 Apple Watch 才能使用嗎？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">不需要。App 可以在 iPhone 上獨立運作，所有功能都可以使用。如果您有 Apple Watch，消耗熱量的數據會更精準，但並非必要條件。</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          我的健康資料會上傳到雲端嗎？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">不會。所有資料僅儲存在您的裝置本地，或透過 Apple HealthKit 同步（受 Apple 保護）。開發者無法存取您的任何健康資料。詳細說明請參閱<a href="https://calorierecycle-at.github.io/Privacy-policy/">隱私權政策</a>。</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          如何更改每日熱量目標？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">點擊右上角齒輪圖示，進入「設定 → 健康設定」，可調整每週減重目標或手動設定每日攝入目標。App 也可以根據您的 BMR 與活動量自動計算。</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          找不到我常吃的食物怎麼辦？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">您可以使用「自訂食物」功能手動輸入食物名稱與熱量。搜尋支援 USDA 美國農業部資料庫與 Open Food Facts 兩個資料來源，涵蓋大量台灣、亞洲及西方食品。</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          刪除 App 後資料還在嗎？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">刪除 App 後，App 內的本機記錄（如飲食日記設定）將一併刪除。但已寫入 Apple 健康 App 的資料仍會保留，您可以在「健康」App 中管理或刪除。</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          如何回報問題或提供建議？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">歡迎直接寄信至 <a href="mailto:Calorie.Recycle@gmail.com">Calorie.Recycle@gmail.com</a>，說明問題發生的步驟或您的建議。我們非常重視每一條回饋，並盡快回覆。</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FAQ EN -->
+  <div data-lang="en">
+    <p class="section-label">FAQ</p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          Do I need an Apple Watch to use the app?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">No. The app works fully on iPhone alone. An Apple Watch improves the accuracy of calorie burn data, but is not required.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          Is my health data uploaded to the cloud?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">No. All data stays on your device or syncs through Apple HealthKit (protected by Apple). The developer has no access to your health data. See our <a href="https://calorierecycle-at.github.io/Privacy-policy/">Privacy Policy</a> for details.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          How do I change my daily calorie goal?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">Tap the gear icon in the top right, then go to Settings → Health Settings. You can set a weekly weight loss goal or enter a manual daily intake target. The app can also auto-calculate based on your BMR and activity level.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          What if I can't find a food I eat regularly?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">Use the Custom Food Entry feature to manually add any food with its name and calorie count. Search covers both the USDA FoodData Central and Open Food Facts databases, with extensive coverage of Asian and Western foods.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          What happens to my data if I delete the app?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">Deleting the app removes all local data (food diary, settings). Data already written to Apple Health remains there and can be managed from the Health app.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          How do I report a bug or send feedback?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">Email us at <a href="mailto:Calorie.Recycle@gmail.com">Calorie.Recycle@gmail.com</a> with a description of the issue or your suggestion. We read every message and respond as quickly as possible.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Anderson Tsai · CalorieRecycle</p>
+    <a href="https://calorierecycle-at.github.io/Privacy-policy/" data-lang="zh">隱私權政策</a>
+    <a href="https://calorierecycle-at.github.io/Privacy-policy/" data-lang="en">Privacy Policy</a>
+  </footer>
+
+</div>
+
+<script>
+  // Language switching
+  function setLang(lang) {
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.style.display = el.dataset.lang === lang ? '' : 'none';
+    });
+    document.querySelectorAll('.lang-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', (i === 0 && lang === 'zh') || (i === 1 && lang === 'en'));
+    });
+    // Keep footer links both visible
+    document.querySelectorAll('footer a').forEach(a => { a.style.display = ''; });
+  }
+
+  // FAQ accordion
+  function toggle(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    // Close all in same list
+    btn.closest('.faq-list').querySelectorAll('.faq-q').forEach(q => {
+      q.classList.remove('open');
+      q.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) {
+      btn.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+
+  // Init: show ZH
+  setLang('zh');
+  // Keep both footer links
+  document.querySelectorAll('footer a').forEach(a => { a.style.display = ''; });
+</script>
+</body>
+</html>
