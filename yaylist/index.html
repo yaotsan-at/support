@@ -1,0 +1,486 @@
+<html lang="zh-TW"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support – Yay List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #0a0a0a;
+      --surface:   #141414;
+      --border:    rgba(255,255,255,0.08);
+      --accent:    #FF8A4C;
+      --accent-dim:rgba(255,138,76,0.12);
+      --text:      #f0f0f0;
+      --muted:     rgba(240,240,240,0.45);
+      --faint:     rgba(240,240,240,0.18);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 56px 0 48px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .app-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(255,138,76,0.25);
+      border-radius: 100px;
+      padding: 6px 14px 6px 8px;
+      margin-bottom: 24px;
+    }
+
+    .app-badge-dot {
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .app-badge span {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    header h1 {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    header h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 520px;
+    }
+
+    /* ── Lang switcher ── */
+    .lang-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active, .lang-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 32px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-card-left h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .contact-card-left p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #0a0a0a;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 22px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .contact-link:hover { opacity: 0.85; }
+
+    /* ── FAQ ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 48px;
+    }
+
+    .faq-item {
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      text-align: left;
+      padding: 18px 22px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .faq-q:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.14);
+    }
+
+    .faq-q.open {
+      border-color: rgba(255,138,76,0.3);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .faq-arrow {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      border: 1.5px solid var(--faint);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.25s, border-color 0.2s;
+    }
+
+    .faq-q.open .faq-arrow {
+      transform: rotate(45deg);
+      border-color: var(--accent);
+    }
+
+    .faq-arrow svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    .faq-a {
+      display: none;
+      background: rgba(20,20,20,0.9);
+      border: 1px solid rgba(255,138,76,0.3);
+      border-top: none;
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+      padding: 16px 22px 20px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .faq-a.open { display: block; }
+
+    .faq-a a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .faq-a a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer p {
+      color: var(--faint);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--faint);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--accent); }
+
+    /* ── Lang content ── */
+    [data-lang="en"] { display: none; }
+
+    @media (max-width: 520px) {
+      header { padding: 40px 0 36px; }
+      .contact-card { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="app-badge">
+      <div class="app-badge-dot"></div>
+      <span>Yay List</span>
+    </div>
+    <h1 data-lang="zh">需要協助？<br>我們在這裡 <em>幫您</em></h1>
+    <h1 data-lang="en" style="display: none;">Need help?<br>We're here <em>for you</em></h1>
+    <p data-lang="zh">如有任何問題或建議，歡迎直接寄信給我們，通常在 1–2 個工作天內回覆。</p>
+    <p data-lang="en" style="display: none;">For questions, feedback, or bug reports, send us an email. We typically respond within 1–2 business days.</p>
+  </header>
+
+  <div class="lang-bar">
+    <button class="lang-btn active" onclick="setLang('zh')">繁體中文</button>
+    <button class="lang-btn" onclick="setLang('en')">English</button>
+  </div>
+
+  <!-- Contact Card -->
+  <div class="contact-card">
+    <div class="contact-card-left">
+      <h2 data-lang="zh">聯絡開發者</h2>
+      <h2 data-lang="en" style="display: none;">Contact the Developer</h2>
+      <p data-lang="zh">個人開發者 · 通常 1–2 個工作天內回覆</p>
+      <p data-lang="en" style="display: none;">Independent developer · Usually replies within 1–2 business days</p>
+    </div>
+    <a class="contact-link" href="mailto:Calorie.Recycle@gmail.com">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="2,4 12,13 22,4"></polyline></svg>
+      Calorie.Recycle@gmail.com
+    </a>
+  </div>
+
+  <!-- FAQ ZH -->
+  <div data-lang="zh">
+    <p class="section-label">常見問題</p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          使用這個 App 需要建立帳號嗎？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"></line><line x1="1" y1="6" x2="11" y2="6"></line></svg></span>
+        </button>
+        <div class="faq-a">不需要。下載後就能直接使用，不用註冊帳號、不用登入。願望清單、準備進度、旅程紀錄都會存在您自己的 iCloud 帳號裡，用來跨裝置同步。</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          共享清單怎麼運作？誰看得到我的清單？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"></line><line x1="1" y1="6" x2="11" y2="6"></line></svg></span>
+        </button>
+        <div class="faq-a">建立共享清單後，您可以用邀請連結或 QR code 邀請家人朋友加入，只有您邀請的人看得到這張清單，其他清單仍是您自己私有的。您隨時可以在「協作」頁停止分享。請留意：邀請連結本身就是存取權限，拿到連結的人都能加入並編輯，無法另外設密碼，這與 Apple 備忘錄、提醒事項的連結分享是同樣的做法。</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          我的資料會上傳到雲端嗎？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"></line><line x1="1" y1="6" x2="11" y2="6"></line></svg></span>
+        </button>
+        <div class="faq-a">會，但只同步到您自己的 iCloud 帳號，不是我們的伺服器——我們沒有伺服器，也看不到您的任何資料，不做廣告追蹤。詳細說明請參閱<a href="https://yaotsan-at.github.io/yaylist-privacy/">隱私權政策</a>。</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          完成後拍的照片，會同步給協作對象嗎？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"></line><line x1="1" y1="6" x2="11" y2="6"></line></svg></span>
+        </button>
+        <div class="faq-a">目前版本裡，照片留在拍攝的那支手機上，不會同步給共享清單裡的其他人，文字內容（願望、準備事項、旅程紀錄）則會同步。這是目前的狀態，未來版本可能會加入照片同步，屆時會另外說明。</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          不知道要寫什麼願望，怎麼開始？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"></line><line x1="1" y1="6" x2="11" y2="6"></line></svg></span>
+        </button>
+        <div class="faq-a">可以到「探索」頁看看，裡面有 127 個依年齡、體力、預算篩選好的靈感，涵蓋旅遊、學習、體能挑戰、創作、人際關係、公益服務、生活風格七大類，每一個都附有具體的準備清單。</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          刪除 App 後資料還在嗎？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"></line><line x1="1" y1="6" x2="11" y2="6"></line></svg></span>
+        </button>
+        <div class="faq-a">資料會保留在您的 iCloud 帳號裡，重新安裝 App 後可以同步回來。如果想要一份不依賴這個 App 也打得開的備份，可以到「設定 → 資料與隱私」把資料匯出成 Markdown 與一般圖檔。</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          如何回報問題或提供建議？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"></line><line x1="1" y1="6" x2="11" y2="6"></line></svg></span>
+        </button>
+        <div class="faq-a">歡迎直接寄信至 <a href="mailto:Calorie.Recycle@gmail.com">Calorie.Recycle@gmail.com</a>，說明問題發生的步驟或您的建議。我們非常重視每一條回饋，並盡快回覆。</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FAQ EN -->
+  <div data-lang="en" style="display: none;">
+    <p class="section-label">FAQ</p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          Do I need to create an account to use the app?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"></line><line x1="1" y1="6" x2="11" y2="6"></line></svg></span>
+        </button>
+        <div class="faq-a">No. You can start using the app right after downloading it — no sign-up, no login. Your wishes, progress, and journal entries are stored in your own iCloud account, which is what keeps them in sync across your devices.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          How do shared lists work? Who can see my list?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"></line><line x1="1" y1="6" x2="11" y2="6"></line></svg></span>
+        </button>
+        <div class="faq-a">Once you create a shared list, you can invite family or friends with a link or a QR code. Only the people you invite can see that list — your other lists stay private. You can stop sharing anytime from the Collaboration tab. Note that the invite link itself acts as the access key: anyone with the link can join and edit, and it can't be password-protected — the same approach Apple Notes and Reminders use for their link sharing.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          Is my data uploaded to the cloud?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"></line><line x1="1" y1="6" x2="11" y2="6"></line></svg></span>
+        </button>
+        <div class="faq-a">Yes, but only to your own iCloud account, not to a server we run — we don't operate a server, can't see your data, and don't do ad tracking. See our <a href="https://yaotsan-at.github.io/yaylist-privacy/">Privacy Policy</a> for details.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          Are photos from completed wishes shared with collaborators?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"></line><line x1="1" y1="6" x2="11" y2="6"></line></svg></span>
+        </button>
+        <div class="faq-a">In the current version, photos stay on the device that took them and are not shared with other people on a shared list, while text content (wishes, prep steps, journal entries) does sync. This is the current behavior; photo syncing may be added in a future update, and we'll note it here if it changes.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          I don't know what to put on my wish list — where do I start?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"></line><line x1="1" y1="6" x2="11" y2="6"></line></svg></span>
+        </button>
+        <div class="faq-a">Check out the Explore tab — it has 127 curated ideas filtered by age, energy level, and budget, spanning travel, learning, physical challenges, creativity, relationships, service, and lifestyle, each with a ready-made checklist.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          What happens to my data if I delete the app?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"></line><line x1="1" y1="6" x2="11" y2="6"></line></svg></span>
+        </button>
+        <div class="faq-a">Your data stays in your iCloud account and comes back when you reinstall the app. If you'd like a backup that's readable without the app, go to Settings → Data & Privacy and export your data as Markdown and ordinary image files.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          How do I report a bug or send feedback?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"></line><line x1="1" y1="6" x2="11" y2="6"></line></svg></span>
+        </button>
+        <div class="faq-a">Email us at <a href="mailto:Calorie.Recycle@gmail.com">Calorie.Recycle@gmail.com</a> with a description of the issue or your suggestion. We read every message and respond as quickly as possible.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 個人開發者 · Yay List</p>
+    <a href="https://yaotsan-at.github.io/yaylist-privacy/" data-lang="zh">隱私權政策</a>
+    <a href="https://yaotsan-at.github.io/yaylist-privacy/" data-lang="en" style="">Privacy Policy</a>
+  </footer>
+
+</div>
+
+<script>
+  // Language switching
+  function setLang(lang) {
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.style.display = el.dataset.lang === lang ? '' : 'none';
+    });
+    document.querySelectorAll('.lang-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', (i === 0 && lang === 'zh') || (i === 1 && lang === 'en'));
+    });
+    // Keep footer links both visible
+    document.querySelectorAll('footer a').forEach(a => { a.style.display = ''; });
+  }
+
+  // FAQ accordion
+  function toggle(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    // Close all in same list
+    btn.closest('.faq-list').querySelectorAll('.faq-q').forEach(q => {
+      q.classList.remove('open');
+      q.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) {
+      btn.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+
+  // Init: show ZH
+  setLang('zh');
+  // Keep both footer links
+  document.querySelectorAll('footer a').forEach(a => { a.style.display = ''; });
+</script>
+
+
+</body></html>
