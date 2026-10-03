@@ -3,312 +3,469 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy – CalorieRecycle</title>
+  <title>Support – CalorieRecycle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --bg:        #0a0a0a;
+      --surface:   #141414;
+      --border:    rgba(255,255,255,0.08);
+      --green:     #4ade80;
+      --green-dim: rgba(74,222,128,0.12);
+      --text:      #f0f0f0;
+      --muted:     rgba(240,240,240,0.45);
+      --faint:     rgba(240,240,240,0.18);
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: #f9f9f7;
-      color: #1a1a1a;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 56px 0 48px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .app-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green-dim);
+      border: 1px solid rgba(74,222,128,0.25);
+      border-radius: 100px;
+      padding: 6px 14px 6px 8px;
+      margin-bottom: 24px;
+    }
+
+    .app-badge-dot {
+      width: 8px; height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+    }
+
+    .app-badge span {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    header h1 {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    header h1 em {
+      font-style: normal;
+      color: var(--green);
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 520px;
+    }
+
+    /* ── Lang switcher ── */
+    .lang-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active, .lang-btn:hover {
+      border-color: var(--green);
+      color: var(--green);
+      background: var(--green-dim);
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 32px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-card-left h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .contact-card-left p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: #0a0a0a;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 22px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .contact-link:hover { opacity: 0.85; }
+
+    /* ── FAQ ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 20px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 48px;
+    }
+
+    .faq-item {
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      text-align: left;
+      padding: 18px 22px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .faq-q:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.14);
+    }
+
+    .faq-q.open {
+      border-color: rgba(74,222,128,0.3);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .faq-arrow {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      border: 1.5px solid var(--faint);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.25s, border-color 0.2s;
+    }
+
+    .faq-q.open .faq-arrow {
+      transform: rotate(45deg);
+      border-color: var(--green);
+    }
+
+    .faq-arrow svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    .faq-a {
+      display: none;
+      background: rgba(20,20,20,0.9);
+      border: 1px solid rgba(74,222,128,0.3);
+      border-top: none;
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+      padding: 16px 22px 20px;
+      color: var(--muted);
+      font-size: 14px;
       line-height: 1.75;
-      padding: 0 16px 60px;
     }
-    .container {
-      max-width: 740px;
-      margin: 40px auto;
-      background: #fff;
-      border-radius: 16px;
-      padding: 48px 52px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-    .lang-bar { display: flex; gap: 8px; margin-bottom: 36px; }
-    .lang-bar a {
-      font-size: 13px; color: #555; text-decoration: none;
-      padding: 4px 14px; border: 1px solid #ddd; border-radius: 20px;
-    }
-    .lang-bar a.active, .lang-bar a:hover { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
-    .badge {
-      display: inline-block; background: #eaf3de; color: #3b6d11;
-      font-size: 12px; font-weight: 600; padding: 3px 12px;
-      border-radius: 20px; margin-bottom: 20px;
-    }
-    h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 6px; }
-    .effective { font-size: 14px; color: #888; margin-bottom: 36px; }
-    h2 { font-size: 17px; font-weight: 600; margin: 36px 0 10px; color: #111; border-left: 3px solid #c0dd97; padding-left: 10px; }
-    h3 { font-size: 15px; font-weight: 600; margin: 20px 0 8px; color: #333; }
-    p { font-size: 15px; color: #333; margin-bottom: 12px; }
-    ul { padding-left: 20px; margin-bottom: 14px; }
-    li { font-size: 15px; color: #333; margin-bottom: 5px; }
-    .highlight-box {
-      background: #f5f5f2; border-radius: 10px;
-      padding: 16px 20px; margin: 16px 0;
-    }
-    .highlight-box li { color: #444; }
-    .no-collect { background: #fcebeb; border-radius: 10px; padding: 16px 20px; margin: 16px 0; }
-    .no-collect li { color: #a32d2d; }
-    .no-collect li::marker { color: #a32d2d; }
-    .contact-box {
-      background: #f0f0ee; border-radius: 12px;
-      padding: 20px 24px; margin-top: 32px;
-    }
-    .contact-box p { margin-bottom: 4px; font-size: 14px; color: #555; }
-    .contact-box a { color: #1a1a1a; font-weight: 600; text-decoration: none; }
-    .divider { border: none; border-top: 1px solid #efefef; margin: 32px 0; }
-    footer { text-align: center; font-size: 13px; color: #aaa; margin-top: 40px; }
 
-    .lang-en { display: none; }
-    .lang-zh { display: block; }
-    body.en .lang-en { display: block; }
-    body.en .lang-zh { display: none; }
+    .faq-a.open { display: block; }
 
-    @media (max-width: 600px) {
-      .container { padding: 28px 20px; margin: 16px auto; }
-      h1 { font-size: 21px; }
-      h2 { font-size: 15px; }
+    .faq-a a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    .faq-a a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer p {
+      color: var(--faint);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--faint);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--green); }
+
+    /* ── Lang content ── */
+  /*  [data-lang="en"] { display: none; }  */
+
+    @media (max-width: 520px) {
+      header { padding: 40px 0 36px; }
+      .contact-card { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
+
+  <header>
+    <div class="app-badge">
+      <div class="app-badge-dot"></div>
+      <span>CalorieRecycle</span>
+    </div>
+    <h1 data-lang="zh">需要協助？<br/>我們在這裡 <em>幫您</em></h1>
+    <h1 data-lang="en">Need help?<br/>We're here <em>for you</em></h1>
+    <p data-lang="zh">如有任何問題或建議，歡迎直接寄信給我們，通常在 1–2 個工作天內回覆。</p>
+    <p data-lang="en">For questions, feedback, or bug reports, send us an email. We typically respond within 1–2 business days.</p>
+  </header>
 
   <div class="lang-bar">
-    <a href="#" class="active" id="btn-zh" onclick="setLang('zh');return false;">繁體中文</a>
-    <a href="#" id="btn-en" onclick="setLang('en');return false;">English</a>
+    <button class="lang-btn active" onclick="setLang('zh')">繁體中文</button>
+    <button class="lang-btn" onclick="setLang('en')">English</button>
   </div>
 
-  <!-- ════════ 繁體中文 ════════ -->
-  <div class="lang-zh">
-    <span class="badge">隱私權政策</span>
-    <h1>CalorieRecycle 隱私權政策</h1>
-    <p class="effective">生效日期：2026 年 10 月 3 日（先前版本：2026 年 4 月 25 日）</p>
-
-    <h2>1. 總覽</h2>
-    <p>CalorieRecycle（以下簡稱「本 App」）由 Anderson Tsai 開發，並尊重您的隱私。本政策說明本 App 收集哪些資料、如何使用、如何保護，以及您的權利。</p>
-
-    <h2>2. 我們收集哪些資料</h2>
-
-    <h3>2-1 Apple HealthKit 資料</h3>
-    <p>本 App 會在您授權後，讀取並寫入 Apple 健康 App 中的以下資料類型：</p>
-    <div class="highlight-box">
-      <ul>
-        <li>活動能量 / Active Energy Burned</li>
-        <li>基礎代謝能量 / Basal Energy Burned</li>
-        <li>步數 / Step Count</li>
-        <li>體重 / Body Weight</li>
-        <li>身高 / Height</li>
-        <li>出生日期（用於計算年齡）</li>
-        <li>性別（用於計算 BMR）</li>
-        <li>飲食熱量及各大營養素（碳水化合物、蛋白質、脂肪等）</li>
-        <li>心率、靜止心率、HRV、血氧、體脂等（可選顯示）</li>
-      </ul>
+  <!-- Contact Card -->
+  <div class="contact-card">
+    <div class="contact-card-left">
+      <h2 data-lang="zh">聯絡開發者</h2>
+      <h2 data-lang="en">Contact the Developer</h2>
+      <p data-lang="zh">Anderson Tsai · 通常 1–2 個工作天內回覆</p>
+      <p data-lang="en">Anderson Tsai · Usually replies within 1–2 business days</p>
     </div>
-    <p>本 App 將飲食記錄寫回健康 App，讓其他健康應用可同步使用。您的 HealthKit 原始資料僅儲存於您的裝置本地，不會上傳至任何伺服器。唯一例外：若您主動加入「好友群組」，App 會上傳由這些資料彙總出的數字（見 2-5），而非原始樣本。</p>
+    <a class="contact-link" href="mailto:Calorie.Recycle@gmail.com">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+      Calorie.Recycle@gmail.com
+    </a>
+  </div>
 
-    <h3>2-2 相機</h3>
-    <p>當您使用條碼掃描功能時，本 App 會請求相機權限以擷取食品條碼圖像，並即時解析後丟棄，不留存任何影像或視訊。</p>
+  <!-- FAQ ZH -->
+  <div data-lang="zh">
+    <p class="section-label">常見問題</p>
+    <div class="faq-list">
 
-    <h3>2-3 本機儲存資料</h3>
-    <p>以下資料儲存於您裝置的 UserDefaults / 本機資料庫，不會傳送至外部：</p>
-    <div class="highlight-box">
-      <ul>
-        <li>飲食日記（食物名稱、份量、熱量、時間）</li>
-        <li>個人設定（語言、體重單位、熱量目標、活動量）</li>
-        <li>健康快取（加速啟動用，定期從 HealthKit 更新）</li>
-      </ul>
-    </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          App 需要 Apple Watch 才能使用嗎？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">不需要。App 可以在 iPhone 上獨立運作，所有功能都可以使用。如果您有 Apple Watch，消耗熱量的數據會更精準，但並非必要條件。</div>
+      </div>
 
-    <h3>2-4 外部 API</h3>
-    <p>本 App 使用以下外部服務查詢食品營養資料，查詢關鍵字（食品名稱或條碼）會傳送至該服務：</p>
-    <div class="highlight-box">
-      <ul>
-        <li>USDA FoodData Central API（美國農業部食品資料庫）</li>
-        <li>Open Food Facts API（開放食品資料庫）</li>
-      </ul>
-    </div>
-    <p>以上服務均為公開資料庫，不包含您的個人識別資訊。請參閱各服務的隱私政策以了解其資料處理方式。</p>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          我的健康資料會上傳到雲端嗎？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">不會。所有資料僅儲存在您的裝置本地，或透過 Apple HealthKit 同步（受 Apple 保護）。開發者無法存取您的任何健康資料。詳細說明請參閱<a href="https://calorierecycle-at.github.io/Privacy-policy/">隱私權政策</a>。</div>
+      </div>
 
-    <h3>2-5 好友群組（選用功能）</h3>
-    <p>只有在您主動建立或加入好友群組後，本 App 才會把「當日彙總數字」寫入 Apple iCloud CloudKit 的公開資料庫，讓同群組成員看到。內容包含：</p>
-    <div class="highlight-box">
-      <ul>
-        <li>暱稱（取自您的 Game Center 顯示名稱）與 iCloud 使用者識別碼</li>
-        <li>當日攝取熱量、消耗熱量、熱量目標、步數、飲水量、運動分鐘數與次數、連續達標週數</li>
-        <li>（依您選擇的分享等級）蛋白質／碳水／脂肪克數與每週摘要文字</li>
-      </ul>
-    </div>
-    <p>我們<strong>不會</strong>上傳逐筆飲食記錄、食物名稱、體重，也不會上傳心率、HRV、血氧、最大攝氧量或個別運動紀錄等 HealthKit 原始樣本。您可隨時在 App 內退出群組，您在該群組的紀錄會一併刪除。這些資料存放於 Apple CloudKit，由 Apple 依其隱私政策處理；開發者不自建伺服器。</p>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          如何更改每日熱量目標？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">點擊右上角齒輪圖示，進入「設定 → 健康設定」，可調整每週減重目標或手動設定每日攝入目標。App 也可以根據您的 BMR 與活動量自動計算。</div>
+      </div>
 
-    <h3>2-6 社群食物資料庫（選用功能）</h3>
-    <p>若您選擇把自訂食物分享給社群，該食物的名稱、品牌、營養成分、條碼與您的 iCloud 使用者識別碼（用來去除重複與管理檢舉）會寫入 CloudKit 公開資料庫，其他使用者可以搜尋到。其中營養成分也可能被貢獻回 Open Food Facts（以匿名帳號送出，不含您的個人資料）。未分享的自訂食物只存在您的裝置上。</p>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          找不到我常吃的食物怎麼辦？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">您可以使用「自訂食物」功能手動輸入食物名稱與熱量。搜尋支援 USDA 美國農業部資料庫與 Open Food Facts 兩個資料來源，涵蓋大量台灣、亞洲及西方食品。</div>
+      </div>
 
-    <h2>3. 我們不收集的資料</h2>
-    <div class="no-collect">
-      <ul>
-        <li>本 App 不收集任何個人識別資訊（姓名、電子郵件、電話等）</li>
-        <li>本 App 不要求建立帳號；僅在使用好友群組時，會讀取您的 Game Center 暱稱與 iCloud 識別碼</li>
-        <li>本 App 不使用廣告追蹤或第三方分析 SDK</li>
-        <li>本 App 沒有開發者自建的伺服器，不會將您的健康原始資料傳送給開發者</li>
-      </ul>
-    </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          刪除 App 後資料還在嗎？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">刪除 App 後，App 內的本機記錄（如飲食日記設定）將一併刪除。但已寫入 Apple 健康 App 的資料仍會保留，您可以在「健康」App 中管理或刪除。</div>
+      </div>
 
-    <h2>4. 資料使用目的</h2>
-    <p>所有資料均僅用於以下目的：</p>
-    <ul>
-      <li>顯示活動環、熱量赤字及健康指標趨勢</li>
-      <li>計算您的基礎代謝率（BMR）與每日總能量消耗（TDEE）</li>
-      <li>計算飲食熱量剩餘預算與赤字進度</li>
-      <li>將飲食記錄同步回 Apple 健康 App</li>
-    </ul>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          如何回報問題或提供建議？
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">歡迎直接寄信至 <a href="mailto:Calorie.Recycle@gmail.com">Calorie.Recycle@gmail.com</a>，說明問題發生的步驟或您的建議。我們非常重視每一條回饋，並盡快回覆。</div>
+      </div>
 
-    <h2>5. HealthKit 特別聲明</h2>
-    <p>依據 Apple 開發者指南，本 App 特別聲明：</p>
-    <ul>
-      <li>本 App 不會將 HealthKit 資料與第三方廣告商分享</li>
-      <li>本 App 不會將 HealthKit 資料用於任何廣告或行銷目的</li>
-      <li>本 App 不會在 App 核心功能之外使用 HealthKit 資料</li>
-    </ul>
-
-    <h2>6. 資料安全</h2>
-    <p>本機資料儲存於您的裝置，受 iOS 系統層級的沙盒保護。除非您使用好友群組或社群食物（見 2-5、2-6），資料不會離開裝置，本 App 也不做雲端備份。刪除本 App 會移除所有本機資料；已上傳到 CloudKit 的好友群組紀錄，請先於 App 內退出群組，或來信請我們協助刪除。</p>
-
-    <h2>7. 兒童隱私</h2>
-    <p>本 App 不針對 13 歲以下兒童設計，亦不有意收集兒童個人資料。</p>
-
-    <h2>8. 您的權利</h2>
-    <p>您可隨時透過 iOS「設定 → 隱私權 → 健康」撤銷 HealthKit 存取權限。撤銷後，本 App 將無法讀取或寫入健康資料。您也可以在 App 內退出好友群組以刪除上傳的彙總紀錄，或直接刪除本 App 以移除所有本機資料。</p>
-
-    <h2>9. 政策更新</h2>
-    <p>本政策如有重大變更，將透過 App Store 版本更新通知。繼續使用本 App 即表示您同意更新後的政策。</p>
-
-    <h2>10. 聯絡我們</h2>
-    <div class="contact-box">
-      <p><strong>開發者：</strong>Anderson Tsai</p>
-      <p><strong>電子郵件：</strong><a href="mailto:Calorie.Recycle@gmail.com">Calorie.Recycle@gmail.com</a></p>
     </div>
   </div>
 
-  <!-- ════════ English ════════ -->
-  <div class="lang-en">
-    <span class="badge">Privacy Policy</span>
-    <h1>CalorieRecycle Privacy Policy</h1>
-    <p class="effective">Effective Date: October 3, 2026 (previous version: April 25, 2026)</p>
+  <!-- FAQ EN -->
+  <div data-lang="en">
+    <p class="section-label">FAQ</p>
+    <div class="faq-list">
 
-    <h2>1. Overview</h2>
-    <p>CalorieRecycle (the "App") is developed by Anderson Tsai. We respect your privacy. This policy describes what data the App collects, how it is used, how it is protected, and your rights.</p>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          Do I need an Apple Watch to use the app?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">No. The app works fully on iPhone alone. An Apple Watch improves the accuracy of calorie burn data, but is not required.</div>
+      </div>
 
-    <h2>2. What Data We Collect</h2>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          Is my health data uploaded to the cloud?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">No. All data stays on your device or syncs through Apple HealthKit (protected by Apple). The developer has no access to your health data. See our <a href="https://calorierecycle-at.github.io/Privacy-policy/">Privacy Policy</a> for details.</div>
+      </div>
 
-    <h3>2-1 Apple HealthKit Data</h3>
-    <p>With your permission, the App reads and writes the following data types in Apple Health:</p>
-    <div class="highlight-box">
-      <ul>
-        <li>Active Energy Burned</li>
-        <li>Basal Energy Burned</li>
-        <li>Step Count</li>
-        <li>Body Weight</li>
-        <li>Height</li>
-        <li>Date of Birth (for age calculation)</li>
-        <li>Biological Sex (for BMR calculation)</li>
-        <li>Dietary Energy &amp; Macronutrients (carbs, protein, fat, etc.)</li>
-        <li>Heart Rate, Resting HR, HRV, Blood Oxygen, Body Fat, etc. (optional display)</li>
-      </ul>
-    </div>
-    <p>The App writes food log entries back to Apple Health so other apps can sync. Your raw HealthKit data is stored locally on your device and is never uploaded to any server. The only exception: if you choose to join a Friend Group, the App uploads numbers summarized from that data (see 2-5), never the raw samples.</p>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          How do I change my daily calorie goal?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">Tap the gear icon in the top right, then go to Settings → Health Settings. You can set a weekly weight loss goal or enter a manual daily intake target. The app can also auto-calculate based on your BMR and activity level.</div>
+      </div>
 
-    <h3>2-2 Camera</h3>
-    <p>When you use the barcode scanner, the App requests camera access to capture barcodes. Images are decoded in real time and immediately discarded — no photos or videos are stored.</p>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          What if I can't find a food I eat regularly?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">Use the Custom Food Entry feature to manually add any food with its name and calorie count. Search covers both the USDA FoodData Central and Open Food Facts databases, with extensive coverage of Asian and Western foods.</div>
+      </div>
 
-    <h3>2-3 Local Storage</h3>
-    <p>The following data is stored locally in UserDefaults / on-device storage and never sent off-device:</p>
-    <div class="highlight-box">
-      <ul>
-        <li>Food diary (food name, serving size, calories, timestamp)</li>
-        <li>User preferences (language, weight unit, calorie goal, activity level)</li>
-        <li>Health cache (for fast startup; periodically refreshed from HealthKit)</li>
-      </ul>
-    </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          What happens to my data if I delete the app?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">Deleting the app removes all local data (food diary, settings). Data already written to Apple Health remains there and can be managed from the Health app.</div>
+      </div>
 
-    <h3>2-4 External APIs</h3>
-    <p>The App queries these external services for food nutrition data; the search keyword (food name or barcode) is sent to each service:</p>
-    <div class="highlight-box">
-      <ul>
-        <li>USDA FoodData Central API</li>
-        <li>Open Food Facts API</li>
-      </ul>
-    </div>
-    <p>These are public databases; your search does not include any personally identifiable information. See each service's privacy policy for their data practices.</p>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          How do I report a bug or send feedback?
+          <span class="faq-arrow"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">Email us at <a href="mailto:Calorie.Recycle@gmail.com">Calorie.Recycle@gmail.com</a> with a description of the issue or your suggestion. We read every message and respond as quickly as possible.</div>
+      </div>
 
-    <h3>2-5 Friend Groups (optional)</h3>
-    <p>Only after you create or join a Friend Group does the App write daily summary numbers to the Apple iCloud CloudKit public database so that members of the same group can see them. This includes:</p>
-    <div class="highlight-box">
-      <ul>
-        <li>A nickname (from your Game Center display name) and your iCloud user identifier</li>
-        <li>Daily calories in, calories out, calorie goal, step count, water intake, workout minutes and count, and weekly-goal streak</li>
-        <li>(Depending on the sharing level you choose) grams of protein / carbs / fat and a weekly summary text</li>
-      </ul>
-    </div>
-    <p>We <strong>do not</strong> upload itemized food logs, food names, or body weight, nor HealthKit raw samples such as heart rate, HRV, blood oxygen, VO2 max, or individual workouts. You can leave a group at any time inside the App, which deletes your records for that group. This data is stored in Apple CloudKit and handled under Apple's privacy policy; the developer runs no servers of their own.</p>
-
-    <h3>2-6 Community Food Database (optional)</h3>
-    <p>If you choose to share a custom food with the community, its name, brand, nutrition values, barcode, and your iCloud user identifier (used to remove duplicates and manage reports) are written to the CloudKit public database where other users can find it. The nutrition values may also be contributed to Open Food Facts using an anonymous account, with no personal data about you. Custom foods you do not share stay on your device only.</p>
-
-    <h2>3. What We Do NOT Collect</h2>
-    <div class="no-collect">
-      <ul>
-        <li>The App does not collect any personally identifiable information (name, email, phone, etc.)</li>
-        <li>The App does not ask you to create an account; only when you use Friend Groups does it read your Game Center nickname and iCloud identifier</li>
-        <li>The App does not use ad-tracking or third-party analytics SDKs</li>
-        <li>The developer runs no servers of their own and does not receive your raw health data</li>
-      </ul>
-    </div>
-
-    <h2>4. How We Use Your Data</h2>
-    <p>All data is used solely for:</p>
-    <ul>
-      <li>Displaying activity rings, calorie deficit, and health metric trends</li>
-      <li>Calculating your Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE)</li>
-      <li>Computing remaining calorie budget and deficit progress</li>
-      <li>Writing food logs back to Apple Health</li>
-    </ul>
-
-    <h2>5. HealthKit Disclosure</h2>
-    <p>As required by Apple's developer guidelines, the App explicitly discloses:</p>
-    <ul>
-      <li>The App does not share HealthKit data with third-party advertisers</li>
-      <li>The App does not use HealthKit data for advertising or marketing</li>
-      <li>The App does not use HealthKit data outside of the App's core health and fitness functionality</li>
-    </ul>
-
-    <h2>6. Data Security</h2>
-    <p>Local data is stored on your device, protected by iOS system-level sandboxing. Unless you use Friend Groups or the community food database (see 2-5, 2-6), data never leaves your device and the App makes no cloud backup. Deleting the App removes all local data; for summary records already uploaded to CloudKit, please leave the group inside the App first, or email us and we will help delete them.</p>
-
-    <h2>7. Children's Privacy</h2>
-    <p>The App is not directed at children under 13 and does not knowingly collect personal data from children under 13.</p>
-
-    <h2>8. Your Rights</h2>
-    <p>You may revoke HealthKit access at any time via iOS Settings → Privacy &amp; Security → Health. After revoking, the App will no longer be able to read or write health data. You may also leave a Friend Group inside the App to delete your uploaded summary records, or delete the App to remove all local data.</p>
-
-    <h2>9. Policy Updates</h2>
-    <p>If we make material changes to this policy, we will notify you through an App Store update. Continued use of the App after updates constitutes acceptance of the revised policy.</p>
-
-    <h2>10. Contact</h2>
-    <div class="contact-box">
-      <p><strong>Developer:</strong> Anderson Tsai</p>
-      <p><strong>Email:</strong> <a href="mailto:Calorie.Recycle@gmail.com">Calorie.Recycle@gmail.com</a></p>
     </div>
   </div>
 
-  <hr class="divider" />
-  <footer>© 2026 Anderson Tsai · CalorieRecycle · All rights reserved.</footer>
+  <footer>
+    <p>© 2026 Anderson Tsai · CalorieRecycle</p>
+    <a href="https://calorierecycle-at.github.io/Privacy-policy/" data-lang="zh">隱私權政策</a>
+    <a href="https://calorierecycle-at.github.io/Privacy-policy/" data-lang="en">Privacy Policy</a>
+  </footer>
 
 </div>
 
 <script>
+  // Language switching
   function setLang(lang) {
-    document.body.className = lang === 'en' ? 'en' : '';
-    document.getElementById('btn-zh').className = lang === 'zh' ? 'active' : '';
-    document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.style.display = el.dataset.lang === lang ? '' : 'none';
+    });
+    document.querySelectorAll('.lang-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', (i === 0 && lang === 'zh') || (i === 1 && lang === 'en'));
+    });
+    // Keep footer links both visible
+    document.querySelectorAll('footer a').forEach(a => { a.style.display = ''; });
   }
+
+  // FAQ accordion
+  function toggle(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    // Close all in same list
+    btn.closest('.faq-list').querySelectorAll('.faq-q').forEach(q => {
+      q.classList.remove('open');
+      q.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) {
+      btn.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+
+  // Init: show ZH
+  setLang('zh');
+  // Keep both footer links
+  document.querySelectorAll('footer a').forEach(a => { a.style.display = ''; });
 </script>
 </body>
 </html>
